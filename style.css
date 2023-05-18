@@ -1,0 +1,77 @@
+body {
+    background-color: gray;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  .tela {
+    background-color: rgb(85, 46, 46);
+    width: 1500px;
+    height: 1500px;
+    position: relative;
+    border: 10px solid red;
+    /* border-radius: 500%; */
+  }
+
+#globolo_branco {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    transition: all 0.7s ease-in-out;
+
+}
+
+
+
+.virus {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+}
+
+.a {
+    top: 80%;
+    left: 60%;
+}
+
+.b {
+    top: 60%;
+    left: 80%;
+}
+
+.c {
+    top: 50%;
+    left: 15%;
+}
+
+.virus_coroa {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 10px dashed rgb(130, 139, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.virus_cor {
+    background-color: purple;
+    width: 100px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.destino {
+    background-color: greenyellow;
+    width: fit-content;
+    position: absolute;
+}
