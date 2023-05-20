@@ -23,21 +23,27 @@ function mover(click) {
     
     setTimeout(() => {
         moverTela(click)
+
     }, 1)
 
-}
+    function moverTela(click) {
 
-function moverTela(click) {
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const globoloWidth = globolo_branco.offsetWidth;
+        const globoloHeight = globolo_branco.offsetHeight;
+        const centerX = click.pageX - diferencaX / 2;
+        const centerY = click.pageY - diferencaY / 2;
+        const scrollX = centerX - viewportWidth / 2 + globoloWidth / 2;
+        const scrollY = centerY - viewportHeight / 2 + globoloHeight / 2;
+        window.scroll(scrollX, scrollY);
+    
+    
+    }
 
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const globoloWidth = globolo_branco.offsetWidth;
-    const globoloHeight = globolo_branco.offsetHeight;
-    const centerX = click.pageX - diferencaX / 2;
-    const centerY = click.pageY - diferencaY / 2;
-    const scrollX = centerX - viewportWidth / 2 + globoloWidth / 2;
-    const scrollY = centerY - viewportHeight / 2 + globoloHeight / 2;
-    window.scroll(scrollX, scrollY);
+
+
+
 
 
 }

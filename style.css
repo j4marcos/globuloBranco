@@ -1,18 +1,26 @@
 body {
-    background-color: gray;
-    padding: 0;
+    background-color: rgb(51, 255, 0);
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
+
+
   
   .tela {
+    background-color: rgb(58, 58, 58);
+    padding: 500px;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+  }
+
+  .mapa {
     background-color: rgb(85, 46, 46);
     width: 1500px;
     height: 1500px;
-    position: relative;
     border: 10px solid red;
-    /* border-radius: 500%; */
   }
+
 
 #globolo_branco {
     background-color: white;
@@ -24,7 +32,10 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
-    transition: all 0.7s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 
 }
 
@@ -32,23 +43,23 @@ body {
 
 .virus {
     position: absolute;
-    top: 20%;
+    top: 30%;
     left: 50%;
 }
 
 .a {
-    top: 80%;
+    top: 40%;
     left: 60%;
 }
 
 .b {
     top: 60%;
-    left: 80%;
+    left: 70%;
 }
 
 .c {
     top: 50%;
-    left: 15%;
+    left: 35%;
 }
 
 .virus_coroa {
@@ -70,8 +81,8 @@ body {
     cursor: pointer;
 }
 
-.destino {
-    background-color: greenyellow;
+.seta {
+    background-color: white;
     width: fit-content;
     position: absolute;
 }
