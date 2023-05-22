@@ -159,12 +159,16 @@ function verificarColisao() {
     }
   }) 
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> parent of 6a6b37e (pacman boca)
   if (elementoColidindo) {
     globolo_branco.style.borderColor = 'red'
   } else {
     globolo_branco.style.borderColor = 'white'
   }
+<<<<<<< HEAD
   if (forma != 'comer') {
     if (elementoColidindo) {
       globolo_branco.style.borderTop = 'transparent'
@@ -173,6 +177,8 @@ function verificarColisao() {
     }
   }
 
+=======
+>>>>>>> parent of 6a6b37e (pacman boca)
 
   if (forma == "comer" && elementoColidindo) {
     comer()
@@ -218,36 +224,17 @@ if (digestao) {
      tamanho = 100 + elementoComendo.offsetHeight/4
      velocidade = 1
      globolo_branco.style.opacity = '1'
-     globolo_branco.style.border = '10px solid white'
-  globolo_branco.style.borderTop = '10px solid white'
-  globolo_branco.style.backgroundColor = 'white'
   } else {
 
  if (forma == "neutra"){
   tamanho = 100
-  velocidade = 1.7
+  velocidade = 1.5
   globolo_branco.style.opacity = '1'
-  globolo_branco.style.border = '10px solid white'
-  globolo_branco.style.borderTop = '10px solid white'
-  globolo_branco.style.backgroundColor = 'white'
   
 }  else if (forma == "comer") {
-  tamanho = 0
+  tamanho = 150
   velocidade = 1
-  globolo_branco.style.border = '50px solid white'
-  globolo_branco.style.borderTop = '50px solid transparent'
-  globolo_branco.style.backgroundColor = 'transparent'
-
-
-  // width: 0px;
-  // height: 0px;
-  // border:50px solid white;
-  // border-width: 50px;
-  // border-top: 50px solid transparent;
-  // position: absolute;
-  // border-radius: 50%;
-  // top: 30%;
-  // left: 30%;
+  globolo_branco.style.opacity = '0.5'
 }
   }
 
