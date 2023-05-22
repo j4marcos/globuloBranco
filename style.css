@@ -114,12 +114,12 @@ height: 100%;
 .bacteria {
     position: absolute;
     background-color: rgba(128, 128, 128, 0.315);
-    width: 250px;
-    height: 100px;
+    width: 100px;
+    height: 250px;
     border: 10px solid rgb(224, 224, 224);
     border-radius: 40px;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -128,9 +128,9 @@ height: 100%;
 }
 
 .plasma {
-    width: 80%;
-    height: 30%;
+    width: 30%;
+    height: 80%;
     background-color: rgb(128, 128, 128);
-    border-radius: 5px;
+    border-radius: 7px;
     z-index: -10;
 }
