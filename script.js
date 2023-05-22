@@ -1,4 +1,4 @@
-const globolo_branco = document.querySelector('.globulo_branco')
+const globolo_branco = document.getElementById('globolo_branco')
 const tela = document.querySelector('.tela')
 const seta = document.querySelector('.seta')
 const mapa = document.querySelector('.mapa')
@@ -34,7 +34,7 @@ setInterval(() => {
   verificarColisao()
   moverBacterias()
   moverVirus()
-  interfaceDeDados()
+  // interfaceDeDados()
 }, 1);
 
 tela.addEventListener('mousemove', (mouse) => {
