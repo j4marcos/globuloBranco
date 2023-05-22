@@ -159,16 +159,12 @@ function verificarColisao() {
     }
   }) 
 
-<<<<<<< HEAD
-  
-=======
->>>>>>> parent of 6a6b37e (pacman boca)
   if (elementoColidindo) {
     globolo_branco.style.borderColor = 'red'
   } else {
     globolo_branco.style.borderColor = 'white'
   }
-<<<<<<< HEAD
+
   if (forma != 'comer') {
     if (elementoColidindo) {
       globolo_branco.style.borderTop = 'transparent'
@@ -177,8 +173,6 @@ function verificarColisao() {
     }
   }
 
-=======
->>>>>>> parent of 6a6b37e (pacman boca)
 
   if (forma == "comer" && elementoColidindo) {
     comer()
