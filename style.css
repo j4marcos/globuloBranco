@@ -1,26 +1,27 @@
 body {
     background-color: rgb(0, 0, 0);
     margin: 0;
-    /* overflow: hidden; */
-  }
+    overflow: hidden;
+    /* -webkit-user-select: none; */
+}
 
-  
-  .tela {
+
+.tela {
     background-color: rgb(58, 58, 58);
     padding: 100px;
     width: fit-content;
     height: fit-content;
     position: relative;
-  }
+}
 
-  .mapa {
+.mapa {
     background-color: rgb(85, 46, 46);
     width: 1500px;
     height: 1500px;
     border: 10px solid red;
-  }
+}
 
-  .seta {
+.seta {
     display: block;
     /* border-top: 10px solid white; */
     border-left: 20px solid white;
@@ -30,15 +31,24 @@ body {
     position: absolute;
     z-index: 100;
     /* transform: translate(-50%, -50%); */
-    
+
+}
+
+.interface {
+position: fixed;
+top: 0px;
+left: 0;
+width: 100px;
+height: 100%;
 }
 
 
 #globolo_branco {
     background-color: white;
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+    border: 10px solid white ;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -47,6 +57,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     box-sizing: border-box;
 }
 
@@ -72,39 +83,54 @@ body {
 
 .virus {
     position: absolute;
-}
-
-.virus_coroa {
-
-    width: 100px;
-    height: 100px;
+    background-color: purple;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    border: 10px dashed rgb(130, 139, 0);
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
 }
 
-.virus_cor {
-    background-color: purple;
-    width: 100px;
-    height: 80px;
+
+.virus_coroa {
+    position: absolute;
     border-radius: 50%;
-    cursor: pointer;
+    border: 10px dashed rgb(130, 139, 0);
+    width: 100%;
+    height: 100%;
 }
+
+#globolo_branco .virus_coroa {
+    width: 120%;
+    height: 120%;
+    border-color: white;
+}
+
 
 .bacteria {
     position: absolute;
     background-color: rgba(128, 128, 128, 0.315);
-    width: 100px;
-    height: 250px;
+    width: 250px;
+    height: 100px;
     border: 10px solid rgb(224, 224, 224);
     border-radius: 40px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    transform: rotate(15deg);
+    transform: rotate(180deg);
+    padding: 10px;
 }
 
+.plasma {
+    width: 80%;
+    height: 30%;
+    background-color: rgb(128, 128, 128);
+    border-radius: 5px;
+    z-index: -10;
+}

@@ -2,35 +2,40 @@ const globolo_branco = document.getElementById('globolo_branco')
 const tela = document.querySelector('.tela')
 const seta = document.querySelector('.seta')
 const mapa = document.querySelector('.mapa')
+const interface = document.querySelector('.interface')
 
 let mouseX = false
 let mouseY = false
 
 let passoX
 let passoY
-let velocidade = 1.5
+let velocidade 
 let angulo
+let tamanho
+let forma = 'neutra'
+let digestao
+let elementoComendo
 
 let colisaoTop = false
 let colisaoBottom = false
 let colisaoLeft = false
 let colisaoRight = false
+let elementoColidindo 
 
 
 setInterval(() => {
   if (mouseX) {
     direcaoMover()
-
   }
-  mouseSeta() // bom! 
-  moverGlobulo() // bom! falta deixar o movimento suave (angulo do passo)
-  moverTela() // certo!!!
-  verificarColisao() // bom! falta colidir com os inimigos
+  // mouseSeta() 
+  moverGlobulo()
+  formaAtual()
+  moverTela() 
+  verificarColisao()
   moverBacterias()
   moverVirus()
-
+  // interfaceDeDados()
 }, 1);
-
 
 tela.addEventListener('mousemove', (mouse) => {
   mouseX = mouse.pageX
@@ -44,6 +49,23 @@ tela.addEventListener('mouseout', () => {
   passoY = 0
   seta.style.display = 'none'
 })
+
+tela.addEventListener('mousedown', (mousedown) => {
+ forma = 'comer'
+})
+
+tela.addEventListener('mouseup', (mouseup) => {
+ forma = 'neutra'
+})
+
+tela.addEventListener('click', (click) => {
+
+})
+
+tela.addEventListener('dblclick', (dbclick) => {
+  poder()
+})
+
 
 
 function direcaoMover() {
@@ -93,11 +115,12 @@ function moverGlobulo() {
 
 
 function moverTela() {
-  window.scroll(globolo_branco.offsetLeft - window.innerWidth / 2, globolo_branco.offsetTop - window.innerHeight / 2)
+  window.scroll(globolo_branco.offsetLeft - window.innerWidth / 2 + globolo_branco.offsetWidth/2, globolo_branco.offsetTop - window.innerHeight / 2 + globolo_branco.offsetHeight/2)
 }
 
 function verificarColisao() {
   let tocando = 0
+  elementoColidindo = false
   // verificando o mapa
   if (globolo_branco.offsetLeft < mapa.offsetLeft) {
     colisaoLeft = true
@@ -115,7 +138,7 @@ function verificarColisao() {
     colisaoBottom = true
   } else { colisaoBottom = false}
 
-  if (colisaoBottom || colisaoLeft || colisaoRight || colisaoTop) {tocando++}
+  if (colisaoBottom || colisaoLeft || colisaoRight || colisaoTop) {elementoColidindo = mapa}
 
   // verificando os corpos
   const bacterias = document.querySelectorAll('.bacteria')
@@ -124,21 +147,27 @@ function verificarColisao() {
 
   bacterias.forEach((bacteria) => {
     if (checkCollision(globolo_branco, bacteria)) {
-      tocando++
+      if (bacteria != elementoComendo) {
+      elementoColidindo = bacteria}
     }
   })
   
   virus.forEach((virus) => {
     if (checkCollision(globolo_branco, virus)) {
-      tocando++
+      if (virus != elementoComendo) {
+      elementoColidindo = virus}
     }
-  })
+  }) 
 
-  if (tocando > 0) {
-    globolo_branco.style.backgroundColor = 'red'
+  if (elementoColidindo) {
+    globolo_branco.style.borderColor = 'red'
   } else {
-    globolo_branco.style.backgroundColor = 'white'
+    globolo_branco.style.borderColor = 'white'
   }
+
+  if (forma == "comer" && elementoColidindo) {
+    comer()
+  } 
 }
 
 function checkCollision(element1, element2) {
@@ -167,13 +196,92 @@ function movimentoBarrado() {
   if (colisaoRight) {
     passoX > 0 ? passoX = 0 : 0
   }
+  
 }
 
 
 function moverBacterias() { }
 function moverVirus() { }
 
-function comer() {}
-function digestao() {}
+function formaAtual() {
 
-function evoluir() {}
+if (digestao) {
+     tamanho = 100 + elementoComendo.offsetHeight/4
+     velocidade = 1
+     globolo_branco.style.opacity = '1'
+  } else {
+
+ if (forma == "neutra"){
+  tamanho = 100
+  velocidade = 1.5
+  globolo_branco.style.opacity = '1'
+  
+}  else if (forma == "comer") {
+  tamanho = 150
+  velocidade = 1
+  globolo_branco.style.opacity = '0.5'
+}
+  }
+
+ globolo_branco.style.width = tamanho + 'px'
+ globolo_branco.style.height = tamanho + 'px'
+
+}
+
+
+function comer() {
+  globolo_branco.innerHTML = ''
+
+  elementoComendo = elementoColidindo
+  elementoColidindo.style.position = 'unset'
+  globolo_branco.appendChild(elementoColidindo)
+  elementoComendo.style.opacity = '0.5'
+
+  console.log(forma,'comeu')
+  digestao = true
+  setTimeout(() => {
+    console.log(forma,'comeu')
+    digestao = false
+  globolo_branco.innerHTML = ''
+    evoluir()
+    elementoComendo = false
+}, 3000)
+}
+
+
+
+function evoluir() {
+  globolo_branco.innerHTML = elementoComendo.innerHTML 
+}
+
+function poder() {}
+
+
+
+
+
+
+
+
+
+
+
+
+function interfaceDeDados() {
+  interface.innerHTML = `mouseX = ${mouseX}
+  let mouseY = ${mouseY}
+  let passoX = ${passoX}
+  let passoY = ${passoY}
+  let velocidade  = ${velocidade}
+  let angulo = ${angulo}
+  let tamanho = ${tamanho}
+  let forma  = ${forma}
+  let digestao = ${digestao}
+  let elementoComendo = ${elementoComendo}
+  let colisaoTop = ${colisaoTop}
+  let colisaoBottom = ${colisaoBottom}
+  let colisaoLeft = ${colisaoLeft}
+  let colisaoRight = ${colisaoRight}
+  let elementoColidindo = ${elementoColidindo}
+`
+}
