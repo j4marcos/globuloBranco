@@ -1,4 +1,4 @@
-const globolo_branco = document.getElementById('globolo_branco')
+const globolo_branco = document.querySelector('.globulo_branco')
 const tela = document.querySelector('.tela')
 const seta = document.querySelector('.seta')
 const mapa = document.querySelector('.mapa')
@@ -34,7 +34,7 @@ setInterval(() => {
   verificarColisao()
   moverBacterias()
   moverVirus()
-  // interfaceDeDados()
+  interfaceDeDados()
 }, 1);
 
 tela.addEventListener('mousemove', (mouse) => {
@@ -159,12 +159,18 @@ function verificarColisao() {
     }
   }) 
 
-  if (forma != 'comer') {
+  
   if (elementoColidindo) {
     globolo_branco.style.borderColor = 'red'
   } else {
     globolo_branco.style.borderColor = 'white'
   }
+  if (forma != 'comer') {
+    if (elementoColidindo) {
+      globolo_branco.style.borderTop = 'transparent'
+    } else {
+      globolo_branco.style.borderTop = 'transparent'
+    }
   }
 
 
