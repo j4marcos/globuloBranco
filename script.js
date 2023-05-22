@@ -165,6 +165,15 @@ function verificarColisao() {
     globolo_branco.style.borderColor = 'white'
   }
 
+  if (forma != 'comer') {
+    if (elementoColidindo) {
+      globolo_branco.style.borderTop = 'transparent'
+    } else {
+      globolo_branco.style.borderTop = 'transparent'
+    }
+  }
+
+
   if (forma == "comer" && elementoColidindo) {
     comer()
   } 
