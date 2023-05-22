@@ -159,11 +159,14 @@ function verificarColisao() {
     }
   }) 
 
+  if (forma != 'comer') {
   if (elementoColidindo) {
     globolo_branco.style.borderColor = 'red'
   } else {
     globolo_branco.style.borderColor = 'white'
   }
+  }
+
 
   if (forma == "comer" && elementoColidindo) {
     comer()
@@ -209,17 +212,36 @@ if (digestao) {
      tamanho = 100 + elementoComendo.offsetHeight/4
      velocidade = 1
      globolo_branco.style.opacity = '1'
+     globolo_branco.style.border = '10px solid white'
+  globolo_branco.style.borderTop = '10px solid white'
+  globolo_branco.style.backgroundColor = 'white'
   } else {
 
  if (forma == "neutra"){
   tamanho = 100
-  velocidade = 1.5
+  velocidade = 1.7
   globolo_branco.style.opacity = '1'
+  globolo_branco.style.border = '10px solid white'
+  globolo_branco.style.borderTop = '10px solid white'
+  globolo_branco.style.backgroundColor = 'white'
   
 }  else if (forma == "comer") {
-  tamanho = 150
+  tamanho = 0
   velocidade = 1
-  globolo_branco.style.opacity = '0.5'
+  globolo_branco.style.border = '50px solid white'
+  globolo_branco.style.borderTop = '50px solid transparent'
+  globolo_branco.style.backgroundColor = 'transparent'
+
+
+  // width: 0px;
+  // height: 0px;
+  // border:50px solid white;
+  // border-width: 50px;
+  // border-top: 50px solid transparent;
+  // position: absolute;
+  // border-radius: 50%;
+  // top: 30%;
+  // left: 30%;
 }
   }
 
