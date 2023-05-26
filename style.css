@@ -101,13 +101,17 @@ height: 100%;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 10px dashed rgb(130, 139, 0);
+   
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
     margin: 0;
 
+}
+
+#globolo_branco .virus {
+     border: 10px dashed rgb(130, 139, 0);
 }
 
 

@@ -30,12 +30,12 @@ setInterval(() => {
     direcaoMover()
   }
   // mouseSeta() 
-  moverGlobulo(globolo_branco)
-  formaAtual()
+  moverGlobulo(globolo_branco) // mover
+  formaAtual() 
   moverTela()
-  verificarColisao()
-  moverBacterias()
-  moverVirus()
+  verificarColisao(globolo_branco) //verificar colisao
+  moverBacterias() // inteligecia artificial
+  moverVirus() // movimento aleatorio
   // interfaceDeDados()
 }, 1);
 
@@ -117,8 +117,7 @@ function moverTela() {
   window.scroll(globolo_branco.offsetLeft - window.innerWidth / 2 + globolo_branco.offsetWidth / 2, globolo_branco.offsetTop - window.innerHeight / 2 + globolo_branco.offsetHeight / 2)
 }
 
-function verificarColisao() {
-  let tocando = 0
+function verificarColisao(globolo_branco) {
   elementoColidindo = false
   // verificando o mapa
   if (globolo_branco.offsetLeft < mapa.offsetLeft) {
@@ -214,8 +213,7 @@ function formaAtual() {
 
   if (digestao) {
     tamanho = 100 + elementoComendo.offsetHeight / 4
-    velocidade = 1
-    visual.opacity = '1'
+    velocidade = 0.7
     visual.border = '10px solid white'
     visual.borderTop = '10px solid white'
     visual.backgroundColor = 'white'
@@ -224,8 +222,8 @@ function formaAtual() {
     if (forma == "neutra") {
       tamanho = 100
       velocidade = 1.7
+      if (infectando) {velocidade = 0.7}
       borda = 10
-      visual.opacity = '1'
       visual.border = '10px solid white'
       visual.borderTop = '10px solid white'
       visual.backgroundColor = 'white'
@@ -252,7 +250,6 @@ function formaAtual() {
 
 function comer() {
   globolo_branco.innerHTML = ''
-
   elementoComendo = elementoColidindo
   elementoColidindo.style.position = 'unset'
   globolo_branco.appendChild(elementoColidindo)
@@ -322,7 +319,6 @@ function infectar(cancelar) {
  
  
 forma = 'neutra'
- 
 }
 
 function rna(barras, cancelar) {
@@ -343,7 +339,7 @@ function rna(barras, cancelar) {
     const clones = document.querySelectorAll('.clone')
     clones.forEach((clone) => {
       moverGlobulo(clone)
-
+      
     })
   }
 
