@@ -1,0 +1,49 @@
+
+.controle{
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    /* background-color: rgba(0, 0, 0, 0.24); */
+    top: 70%;
+    left: 50%;
+}
+
+.dpad {
+    background-color: rgba(60, 56, 116, 0.774);
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    z-index: 100;
+    translate: -50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.map {
+background-color: gray;
+position: relative;
+width: 400px;
+height: 400px;
+z-index: -100;
+}
+
+.globolo {
+    position: absolute;
+    background-color: blue;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    top: 300px;
+    left: 300px;
+    translate: -50% -50%;
+    transition: all 0.09s ease-out;
+}
+    
