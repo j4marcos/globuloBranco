@@ -1,18 +1,17 @@
 {
-  "name": "globulo-branco",
-  "version": "2.0",
+  "name": "globulo-branco-game",
+  "version": "2.0.0",
+  "type": "module",
   "description": "game",
-  "main": "index.js",
-  "repository": "https://github.com/j4marcos/globuloBranco.git",
-  "author": "j4marcos <joaomarcos2004.jonh@gmail.com>",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "express": "^4.19.2"
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node src/index.js"
   },
-  "devDependencies": {
-    "@types/express": "^4.17.21",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.4.5"
+  "author": "j4marcos",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-ws": "^5.0.2",
+    "ws": "^8.17.0"
   }
 }
