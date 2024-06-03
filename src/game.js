@@ -1,4 +1,4 @@
-import { updateClients } from "./index.js";
+
 
 const mapWidth = 500;
 const mapHeight = 500;
@@ -39,5 +39,6 @@ setInterval(() => {
         if (player.x > mapWidth) player.x = 0;
         if (player.y > mapHeight) player.y = 0;
     });
-    updateClients();
+    
 }, 10);
+

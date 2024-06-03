@@ -40,11 +40,14 @@ wss.on('connection', (ws) => {
     });
 });
 
-export const updateClients = () => {
+const updateClients = () => {
+    const state = JSON.stringify({type: 'gameState', gameData});
     connections.forEach((ws) => {
-        ws.send(JSON.stringify({type: 'gameState', gameData}))
+        ws.send(state)
     });
 }
+
+setInterval(updateClients, 10)
 
 server.listen(3140, () => {
     console.log('Server is running on port 3140');
