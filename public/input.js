@@ -1,16 +1,22 @@
-import { sendDirection } from "./index";
+import { sendDirection } from "./index.js";
 
-let controlX
-let controlY
+let controlX;
+let controlY;
+
+let lastDirection;
+let direction;
 
 const defineControlPosition = () => {
-    controlX = window.innerWidth / 2;
-    controlY = window.innerHeight / 2;
-}
+  controlX = window.innerWidth / 2;
+  controlY = window.innerHeight / 2;
+};
 
-const addDesktopControl = () => {
+export const createControl = () => {
+  defineControlPosition();
+  const screenProtection = document.createElement("div");
+  screenProtection.className = "screen-protection";
+  document.body.appendChild(screenProtection);
 
-defineControlPosition()
   const point = document.createElement("div");
   point.className = "point";
   document.body.appendChild(point);
@@ -26,16 +32,19 @@ defineControlPosition()
     const dy = y - controlY;
     const angle = Math.atan2(dy, dx);
     const distance = Math.sqrt(dx * dx + dy * dy);
-    arrow.style.top = controlY + Math.sin(angle) * 100  + "px";
+    arrow.style.top = controlY + Math.sin(angle) * 100 + "px";
     arrow.style.left = controlX + Math.cos(angle) * 100 + "px";
+    direction = angle;
     arrow.style.rotate = angle + "rad";
-    sendDirection(angle);
   });
+
+  window.addEventListener("resize", () => {
+    defineControlPosition();
+  });
+
+  setInterval(() => {
+    if (lastDirection != direction) sendDirection(direction);
+    lastDirection = direction;
+  }, 100);
 };
 
-addDesktopControl();
-
-
-window.addEventListener('resize',() => {
-    defineControlPosition()
-})

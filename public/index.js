@@ -1,15 +1,16 @@
-const ws = new WebSocket("ws://localhost:3140");
-import "./input.js";
-import { initGame } from "./render.js";
+const ws = new WebSocket(window.location.href.replace("http", "ws"));
+import {createControl} from "./input.js";
+import { renderGame } from "./render.js";
 
-ws.addEventListener("open", () => {
+ws.addEventListener("connected", (e) => {
     console.log("Connected to the server");
     });
+    createControl();
 
 ws.addEventListener("message", (message) => {
     message = JSON.parse(message.data);
     if (message.type === "gameState") {
-        initGame(message.gameData);
+        renderGame(message.gameData);
     } else {
         console.log("Unknown message type:", message);
     }
@@ -17,6 +18,7 @@ ws.addEventListener("message", (message) => {
 );
 
 export const sendDirection = (angle) => {
+    if (ws.readyState === ws.OPEN)
     ws.send(JSON.stringify({ type: "control", angle }));
 }
 
